@@ -3,9 +3,21 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+
+void echo(char value[])
+{
+    printf("Starting");
+    char temp[100];
+    //strncpy(temp, value, (int) value + 5);
+    char* result[strlen(temp) + 2] = "hello";
+    strcpy(result, temp);
+    strcat(result, "\n");
+    printf(result);
+}
+
 int main()
 {
-
     bool done = false;
     while (done == false)
     {
@@ -14,28 +26,13 @@ int main()
         gets(userinput);
 
         // copy off front 5 characters
-        char front[] = strncpy(front, userinput, 5);
+        char front[6];
+        strncpy(front, userinput, 5);
         // if its "echo " then
-        if (strcmp(front, "echo ") == 0)
+        if (strcmp(front, "echo @") == 0)
         {
-            // make a pointer to the character after the space after the o in echo
-            char backpointer[] = strchr(userinput, 'o') + 2;
-
-            // make an arbitrarily large output
-            char output[100001];
-            
-            // copy everything else from the input to the output
-            strncpy(output, userinput, backpointer);
-
-            // copy the output to a new string 2 characters longer
-            char *result = malloc(strlen(output) + 2);
-            strcpy(result, output);
-
-            // add a new line
-            strcat(result, "\n");
-
-            // print it out
-            printf(result);
+            printf("Echoing");
+            echo(userinput);
         }
 
         if (strcmp(userinput, "quit") == 0)
@@ -44,9 +41,4 @@ int main()
         }
     }
     return 0;
-}
-
-void echo(char value[])
-{
-    puts(value);
 }
