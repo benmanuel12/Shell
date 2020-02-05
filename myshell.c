@@ -7,10 +7,9 @@
 
 void echo(char value[])
 {
-    printf("Starting");
-    char temp[100];
-    //strncpy(temp, value, (int) value + 5);
-    char* result[strlen(temp) + 2] = "hello";
+    char temp[1000];
+    strncpy(temp, value + 5, 995);
+    char result[995] = "hello";
     strcpy(result, temp);
     strcat(result, "\n");
     printf(result);
@@ -31,7 +30,6 @@ int main()
         // if its "echo " then
         if (strcmp(front, "echo @") == 0)
         {
-            printf("Echoing");
             echo(userinput);
         }
 
